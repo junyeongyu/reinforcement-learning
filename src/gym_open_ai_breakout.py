@@ -205,7 +205,7 @@ ACTION_MEANING = {
 
 #env = AtariEnv(game='breakout')
 
-
+'''
 # Maximize your score in the Atari 2600 game Breakout.
 # In this environment, the observation is an RGB image of the screen, which is an array of shape (210, 160, 3) Each action is repeatedly performed for a duration of kk frames, where kk is uniformly sampled from \{2, 3, 4\}{2,3,4}.
 env = gym.make('Breakout-v0')
@@ -215,3 +215,26 @@ for _ in range(1000):
     env.step(env.action_space.sample()) # take a random action
 
 env.close()
+'''
+
+env = gym.make('Breakout-v0')
+for i_episode in range(20):
+    observation = env.reset()
+    for t in range(1000):
+        env.render()
+        #print(observation)
+        action = env.action_space.sample()
+        # action = action % 2
+        print (action)
+        #action = 0 # start/stop program (?)
+        #action = 1 # no move
+        #action = 2 # right
+        #action = 3 # left
+        observation, reward, done, info = env.step(action)
+        if done:
+            print("Episode finished after {} timesteps".format(t+1))
+            break
+        
+env.close()
+
+
