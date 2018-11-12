@@ -15,10 +15,10 @@ class QLearn:
         self.actions = actions
 
     def getQ(self, state, action):
-        print(state)
-        print(type(state))
-        print(action)
-        print(self.q)
+        #print(state)
+        #print(type(state))
+        #print(action)
+        #print(self.q)
         return self.q.get((state.tostring(), action), 0.0)
 
     def learnQ(self, state, action, reward, value):
@@ -66,22 +66,20 @@ def build_state(features):
 def to_bin(value, bins):
     return numpy.digitize(x=[value], bins=bins)[0]
 
-
-qlearn = QLearn(actions=range(env.action_space.n),
-                alpha=0.5, gamma=0.90, epsilon=0.1)
-
 env = gym.make('CartPole-v0')
-for i_episode in range(200):
+qlearn = QLearn(actions=range(env.action_space.n), alpha=0.5, gamma=0.90, epsilon=0.1)
+
+for i_episode in range(2000):
     observation = env.reset()
     state = observation
     qlearn.epsilon = qlearn.epsilon * 0.999 # added epsilon decay
     cumulated_reward = 0
     for t in range(1000):
         env.render()
-        print(observation)
+        #print(observation)
         #action = env.action_space.sample()
         action = qlearn.chooseAction(state)
-        print(action)
+        #print(action)
         observation, reward, done, info = env.step(action)
         nextState = observation
         qlearn.learn(state, action, reward, nextState)
