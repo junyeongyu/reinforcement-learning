@@ -173,6 +173,8 @@ ex - Q (3,1)
  [0. 4.]]
 '''
 
+
+'''
 # initialze
 import numpy as np
 env = gym.make('CartPole-v0')
@@ -221,3 +223,4 @@ for i in range(1, 100001):
         print(f"Episode: {i}")
 
 print("Training finished.\n")
+'''
