@@ -35,7 +35,7 @@ if __name__ == "__main__":
         state.resize((20, 20, 3))
         #print(state)
         state = np.reshape(state, [1, n_features])
-        for t in range(1000):
+        for t in range(100000000):
             env.render()        
             #action = env.action_space.sample()
             action = agent.act(state)
