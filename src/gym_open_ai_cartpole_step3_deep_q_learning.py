@@ -80,7 +80,9 @@ if __name__ == "__main__":
             # Advance the game to the next frame based on the action.
             # Reward is 1 for every frame the pole survived
             next_state, reward, done, _ = env.step(action)
+            #print(next_state) [-0.03537882 -0.21518298 -0.03198234  0.29042584]
             next_state = np.reshape(next_state, [1, 4])
+            #print(next_state) [[-0.03537882 -0.21518298 -0.03198234  0.29042584]]
             # Remember the previous state, action, reward, and done
             agent.remember(state, action, reward, next_state, done)
             # make next_state the new current state for the next frame.
